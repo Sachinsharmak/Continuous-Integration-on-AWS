@@ -1,0 +1,47 @@
+Setting up a development pipeline with various AWS services and integrating with external tools like SonarCloud. Here's a breakdown of the flow of execution:
+
+Setup AWS Blue Account:
+
+Log in to AWS with a Plus account.
+Navigate to CodeCommit service.
+Create CodeCommit Repository:
+
+Create a repository to store source code.
+Create IAM User for CodeCommit:
+
+Create an IAM user with CodeCommit policy.
+Generate access keys for the IAM user.
+Local Machine Setup:
+
+Generate SSH keys for local machine.
+Perform SSH-based login to CodeCommit repository.
+Switch Source Code Repositories:
+
+Take source code from GitHub and download it locally.
+Switch the repository to CodeCommit, preserving commits and history.
+Setup CodeArtifact Service:
+
+Create a repository for storing Maven dependencies.
+Create another IAM user with CodeArtifact access.
+Install CLI on local machine and configure it with access keys.
+Obtain authentication token.
+Update settings.xml file with CodeArtifact repository details.
+Build Job Setup:
+
+Set up a build job for Sonar analysis.
+Create an account on SonarCloud and generate a token.
+Store Sonar details in Parameter Store.
+Create a build job in AWS CodeBuild.
+Update the role for CodeBuild to access Parameter Store.
+Set up notifications, e.g., via SMS or Slack.
+Artifact Deployment:
+
+Set up a build project to build and deploy artifacts to an S3 bucket.
+Update settings.xml with artifact versions including timestamps.
+Store necessary properties in Parameter Store.
+Update CodeBuild role to access Parameter Store.
+Connect Everything with Pipeline:
+
+Configure Pipeline with CodeCommit, Sonar analysis job, and build job.
+Create a test code job.
+Test the pipeline by making a code change to trigger automatic deployment.
